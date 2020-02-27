@@ -1,10 +1,14 @@
 import React from "react";
 import "./App.scss";
+import Home from "./components/home";
+import Layout from "./components/layouts";
 
 function App() {
   return (
     <div className="App">
-      <h1>Movie app</h1>
+      <Layout>
+        <Home />
+      </Layout>
     </div>
   );
 }
