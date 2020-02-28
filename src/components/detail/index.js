@@ -5,9 +5,9 @@ export default function index() {
   return (
     <div>
       <hr />
-      This is Home component
+      This is Detail component
       <br />
-      <Link to="/detail">Go Detail</Link>
+      <Link to="/">Go Home</Link>
       <hr />
     </div>
   );
