@@ -1,3 +1,72 @@
+@import "./sass/variable.scss";
+
 body {
-  background-color: #e5e5e5;
+  box-sizing: border-box;
+}
+
+a {
+  color: $color-1;
+  text-decoration: none;
+
+  &:hover {
+    opacity: 0.6;
+    cursor: pointer;
+  }
+}
+
+.container {
+  max-width: $max-width-container;
+  margin: auto;
+  padding: 2rem;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.flex {
+  display: flex;
+
+  &.column {
+    flex-direction: column;
+  }
+  &.wrap {
+    flex-wrap: wrap;
+  }
+  &.between {
+    justify-content: space-between;
+  }
+  &.center {
+    align-items: center;
+    justify-content: center;
+  }
+  &.y-center {
+    align-items: center;
+  }
+  &.x-center {
+    justify-content: center;
+  }
+}
+
+.inline {
+  display: inline;
+}
+
+.m-half {
+  margin: 0.5rem;
+}
+.m-1 {
+  margin: 1rem;
+}
+.mr-1 {
+  margin-right: 1rem;
+}
+.mb-1 {
+  margin-bottom: 1rem;
+}
+.ml-0 {
+  margin-left: 0;
+}
+.mt-0 {
+  margin-top: 0;
 }

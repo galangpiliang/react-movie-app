@@ -1,0 +1,35 @@
+@import "../../sass/variable.scss";
+
+.Footer {
+  background-color: $color-2;
+  color: $color-1;
+
+  .logo-wrapper {
+    max-width: 400px;
+
+    .icon-logo {
+      color: $color-3;
+      font-size: 3rem;
+    }
+    .text-logo {
+      display: inline;
+    }
+  }
+
+  .link-wrapper {
+    & > a {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .social-wrapper {
+    a {
+      margin-right: 1rem;
+    }
+  }
+
+  .icon-logo {
+    color: $color-3;
+    font-size: 2rem;
+  }
+}
