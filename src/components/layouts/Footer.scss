@@ -4,6 +4,15 @@
   background-color: $color-2;
   color: $color-1;
 
+  a {
+    color: $color-1;
+  }
+
+  .container {
+    padding-top: 2rem;
+    padding-bottom: 0.5rem;
+  }
+
   .logo-wrapper {
     max-width: 400px;
 
@@ -13,6 +22,9 @@
     }
     .text-logo {
       display: inline;
+    }
+    .description {
+      text-align: justify;
     }
   }
 

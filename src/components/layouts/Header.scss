@@ -1,0 +1,118 @@
+@import "../../sass/variable.scss";
+
+.Header {
+  color: $color-2;
+  box-shadow: 0 0 5px $color-4;
+
+  .search-wrapper {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    max-width: 30rem;
+    flex: 1;
+  }
+
+  .search {
+    border: 1px solid $color-4;
+    border-radius: 4px;
+    padding: 0.5rem;
+    padding-left: 2rem;
+    width: 100%;
+  }
+
+  .icon-search {
+    position: absolute;
+    margin: 0.5rem;
+    color: $color-4;
+  }
+
+  .container {
+    justify-content: space-between;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  .icon-logo {
+    color: $color-3;
+    font-size: 3rem;
+  }
+  .text-logo {
+    display: inline;
+    color: $color-2;
+    margin-right: 2rem;
+  }
+
+  .profile-wrapper {
+    position: relative;
+  }
+
+  .profile {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-left: 2rem;
+
+    &:hover {
+      opacity: 0.5;
+    }
+  }
+
+  .dropdown {
+    display: none;
+    background-color: $color-1;
+    width: 10rem;
+    border-radius: 4px;
+    position: absolute;
+    right: 0;
+    box-shadow: 0 0 5px $color-4;
+    padding: 1rem;
+    transition: all 0.5s ease;
+
+    .username {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      display: block;
+    }
+
+    & > * {
+      display: block;
+      padding: 0.5rem;
+
+      &:hover:not(strong) {
+        padding-left: 1rem;
+        background-color: $color-3;
+        border-radius: 4px;
+        color: $color-1;
+        opacity: 1;
+      }
+    }
+  }
+
+  .profile-wrapper:hover .dropdown {
+    display: block;
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width: 768px) {
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px) {
+  .Header {
+    .container {
+      margin: 0 auto;
+      justify-content: center;
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+    .logo {
+      width: 100%;
+    }
+  }
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 320px) {
+}

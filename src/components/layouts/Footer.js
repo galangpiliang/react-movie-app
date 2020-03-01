@@ -8,7 +8,7 @@ export default function footer() {
       <div className="container">
         <div className="links flex wrap between">
           <div className="logo-wrapper">
-            <a className="logo flex y-center">
+            <a href="/" className="logo flex y-center">
               <FontAwesomeIcon
                 className="icon-logo"
                 icon={["fab", "youtube"]}
@@ -33,7 +33,7 @@ export default function footer() {
           <div className="social-wrapper">
             <div className="download">
               <strong>Download</strong>
-              <div className="m-1 ml-0">
+              <div className="mt-1 mb-1">
                 <a
                   href="https://play.google.com/store"
                   className="flex y-center m-1 ml-0"
@@ -58,7 +58,7 @@ export default function footer() {
             </div>
             <div className="socmed">
               <strong>Social media</strong>
-              <div className="m-1 ml-0">
+              <div className="mt-1 mb-1">
                 <a href="https://www.facebook.com/">
                   <FontAwesomeIcon
                     className="icon-logo"
