@@ -9,7 +9,8 @@ input {
   font-size: 1rem;
 }
 
-a {
+a,
+button {
   color: $color-2;
   text-decoration: none;
   transition: all 0.5s ease;
@@ -29,6 +30,10 @@ a {
 
 .text-center {
   text-align: center;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 .flex {
@@ -61,6 +66,9 @@ a {
 
 .m-half {
   margin: 0.5rem;
+}
+.m-0 {
+  margin: 0;
 }
 .m-1 {
   margin: 1rem;

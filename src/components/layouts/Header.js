@@ -1,9 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function header() {
-  const login = true;
+// Modal Components
+import Signin from "./modal/auths/Signin";
+import Signup from "./modal/auths/Signup";
+
+function Header() {
+  const login = false;
+  const [modal, setModal] = useState("");
+
+  const signin = "signin";
+  const signup = "signup";
+
+  const toggleModal = e => {
+    setModal({
+      [e.target.id]: !modal[e.target.id]
+    });
+  };
 
   return (
     <div className="Header">
@@ -12,7 +26,7 @@ export default function header() {
           <FontAwesomeIcon className="icon-logo" icon={["fab", "youtube"]} />
           <h2 className="text-logo m-half">GalpilTV</h2>
         </a>
-        <div className="search-wrapper">
+        <div className="search-wrapper flex y-center">
           <FontAwesomeIcon className="icon-search" icon={["fa", "search"]} />
           <input type="text" placeholder="Search movie..." className="search" />
         </div>
@@ -25,18 +39,30 @@ export default function header() {
             />
             <div className="dropdown">
               <strong className="username">Galang Piliang</strong>
+              <a href="/#">Change Avatar</a>
               <a href="/#">Profile</a>
-              <a href="/#">Settings</a>
               <a href="/#">Help</a>
               <a href="/#">Sign out</a>
             </div>
           </div>
         ) : (
-          <a href="/#" className="ml-1">
-            <strong> Sign in </strong>
+          <a id={signin} href="/#" className="ml-1 bold" onClick={toggleModal}>
+            Sign in
           </a>
         )}
       </div>
+      {modal[signin] ? (
+        <Signin toggleModal={toggleModal} signup={signup} />
+      ) : (
+        false
+      )}
+      {modal[signup] ? (
+        <Signup toggleModal={toggleModal} signin={signin} />
+      ) : (
+        false
+      )}
     </div>
   );
 }
+
+export default Header;
