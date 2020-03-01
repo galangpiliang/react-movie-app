@@ -5,6 +5,8 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // Modal Components
 import Signin from "./modal/auths/Signin";
 import Signup from "./modal/auths/Signup";
+import Profile from "./modal/profile";
+import Upload from "./modal/profile/upload";
 
 function Header() {
   const login = false;
@@ -12,6 +14,8 @@ function Header() {
 
   const signin = "signin";
   const signup = "signup";
+  const profile = "profile";
+  const upload = "upload";
 
   const toggleModal = e => {
     setModal({
@@ -39,9 +43,12 @@ function Header() {
             />
             <div className="dropdown">
               <strong className="username">Galang Piliang</strong>
-              <a href="/#">Change Avatar</a>
-              <a href="/#">Profile</a>
-              <a href="/#">Help</a>
+              <a id={upload} href="/#" onClick={toggleModal}>
+                Change Avatar
+              </a>
+              <a id={profile} href="/#" onClick={toggleModal}>
+                Update Profile
+              </a>
               <a href="/#">Sign out</a>
             </div>
           </div>
@@ -61,6 +68,8 @@ function Header() {
       ) : (
         false
       )}
+      {modal[profile] ? <Profile toggleModal={toggleModal} /> : false}
+      {modal[upload] ? <Upload toggleModal={toggleModal} /> : false}
     </div>
   );
 }
