@@ -1,8 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Modal.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+// Redux
+import { useDispatch, useSelector } from "react-redux";
+import { ACTION_UPDATE_PROFILE } from "../../../../stores/actions/auth";
+
 export default function Signin(props) {
+  const stateUser = useSelector(state => state.auth);
+  const dispatch = useDispatch();
+  const [input, setInput] = useState({
+    fullname: stateUser.fullname,
+    email: stateUser.email,
+    image: stateUser.image
+  });
+
+  const handleInput = e => {
+    setInput({
+      ...input,
+      [e.target.id]: e.target.value
+    });
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    props.toggleModal(e);
+    console.log("handleInput");
+    dispatch(ACTION_UPDATE_PROFILE(input));
+  };
+
   return (
     <div className="Auths flex center">
       <div className="modal flex center column">
@@ -11,10 +37,13 @@ export default function Signin(props) {
           <FontAwesomeIcon icon={["fa", "window-close"]} />
         </button>
 
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <div className="input-wrapper flex y-center">
             <FontAwesomeIcon className="icon-input" icon={["fa", "user"]} />
             <input
+              id="fullname"
+              value={input.fullname}
+              onChange={handleInput}
               type="text"
               placeholder="Input Your Username..."
               className="input"
@@ -24,10 +53,14 @@ export default function Signin(props) {
           <div className="input-wrapper flex y-center">
             <FontAwesomeIcon className="icon-input" icon={["fa", "envelope"]} />
             <input
+              id="email"
+              value={input.email}
+              onChange={handleInput}
               type="email"
               placeholder="Input Your Email..."
               className="input"
               required
+              disabled
             />
           </div>
 

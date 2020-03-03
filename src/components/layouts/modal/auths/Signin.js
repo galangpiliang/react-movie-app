@@ -1,8 +1,32 @@
-import React from "react";
+import React, { useState } from "react";
 import "../Modal.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-export default function Signin(props) {
+// Redux
+import { useDispatch } from "react-redux";
+import { ACTION_SIGN_IN } from "../../../../stores/actions/auth";
+
+function Signin(props) {
+  const dispatch = useDispatch();
+  const [input, setInput] = useState({
+    email: "",
+    password: ""
+  });
+
+  const handleInput = e => {
+    setInput({
+      ...input,
+      [e.target.id]: e.target.value
+    });
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    props.toggleModal(e);
+    console.log("handleInput");
+    dispatch(ACTION_SIGN_IN(input));
+  };
+
   return (
     <div className="Auths flex center">
       <div className="modal flex center column">
@@ -11,10 +35,13 @@ export default function Signin(props) {
           <FontAwesomeIcon icon={["fa", "window-close"]} />
         </button>
 
-        <form action="">
+        <form onSubmit={handleSubmit}>
           <div className="input-wrapper flex y-center">
             <FontAwesomeIcon className="icon-input" icon={["fa", "envelope"]} />
             <input
+              id="email"
+              value={input.email}
+              onChange={handleInput}
               type="email"
               placeholder="Input Your Email..."
               className="input"
@@ -24,6 +51,9 @@ export default function Signin(props) {
           <div className="input-wrapper flex y-center">
             <FontAwesomeIcon className="icon-input" icon={["fa", "key"]} />
             <input
+              id="password"
+              value={input.password}
+              onChange={handleInput}
               type="password"
               placeholder="Input Your Password..."
               className="input"
@@ -54,3 +84,5 @@ export default function Signin(props) {
     </div>
   );
 }
+
+export default Signin;

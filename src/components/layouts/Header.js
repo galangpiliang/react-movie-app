@@ -8,14 +8,25 @@ import Signup from "./modal/auths/Signup";
 import Profile from "./modal/profile";
 import Upload from "./modal/profile/upload";
 
+// Redux
+import { useSelector, useDispatch } from "react-redux";
+import { ACTION_SIGN_OUT } from "../../stores/actions/auth";
+
 function Header() {
-  const login = false;
+  const stateUser = useSelector(state => state.auth);
+  const dispatch = useDispatch();
+
   const [modal, setModal] = useState("");
 
   const signin = "signin";
   const signup = "signup";
   const profile = "profile";
   const upload = "upload";
+
+  const doSignout = () => {
+    console.log("signout triggered");
+    dispatch(ACTION_SIGN_OUT());
+  };
 
   const toggleModal = e => {
     setModal({
@@ -34,22 +45,20 @@ function Header() {
           <FontAwesomeIcon className="icon-search" icon={["fa", "search"]} />
           <input type="text" placeholder="Search movie..." className="search" />
         </div>
-        {login ? (
+        {stateUser ? (
           <div className="profile-wrapper">
-            <img
-              className="profile"
-              src="https://images.unsplash.com/photo-1518806118471-f28b20a1d79d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=80"
-              alt="profile"
-            />
+            <img className="profile" src={stateUser.image} alt="profile" />
             <div className="dropdown">
-              <strong className="username">Galang Piliang</strong>
+              <strong className="username">{stateUser.fullname}</strong>
               <a id={upload} href="/#" onClick={toggleModal}>
                 Change Avatar
               </a>
               <a id={profile} href="/#" onClick={toggleModal}>
                 Update Profile
               </a>
-              <a href="/#">Sign out</a>
+              <a href="/#" onClick={doSignout}>
+                Sign out
+              </a>
             </div>
           </div>
         ) : (
