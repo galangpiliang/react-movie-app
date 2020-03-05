@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import Slider from "./slider";
 import "./Home.scss";
@@ -36,19 +36,19 @@ export default function Home() {
   Genre =
     stateMovie.docs &&
     stateMovie.genres.map(genre => (
-      <a className="" href="/#">
+      <a key={genre._id} className="" href="/#">
         {genre.genre}
       </a>
     ));
 
   useEffect(() => {
     console.log("effect");
-    getMovies();
     dispatch(ACTION_GET_GENRE());
+    dispatch(ACTION_GET_MOVIE());
     return () => {
       console.log("cleanup");
     };
-  }, []);
+  }, [dispatch]);
 
   const pagination = [];
 

@@ -3,7 +3,7 @@ import "./Character.scss";
 
 export default function Character() {
   var Cast = Array.from(Array(10)).map((a, td_i, arr) => (
-    <a href="#" className="cast-wrapper">
+    <a href="/#" className="cast-wrapper">
       <img src={require("../home/images/cast.jpg")} alt="" />
       <strong>Cast Name</strong>
     </a>
