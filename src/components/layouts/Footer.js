@@ -1,5 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import "./Footer.scss";
 
 export default function footer() {
@@ -8,13 +9,13 @@ export default function footer() {
       <div className="container">
         <div className="links flex wrap between">
           <div className="logo-wrapper">
-            <a href="/" className="logo flex y-center">
+            <Link to="/" className="logo flex y-center">
               <FontAwesomeIcon
                 className="icon-logo"
                 icon={["fab", "youtube"]}
               />
               <h2 className="text-logo m-half">GalpilTV</h2>
-            </a>
+            </Link>
             <p className="description">
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Numquam
               exercitationem blanditiis officiis, iste sequi minima dicta

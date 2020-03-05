@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Header.scss";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // Modal Components
@@ -37,10 +38,10 @@ function Header() {
   return (
     <div className="Header">
       <div className="container flex y-center wrap">
-        <a href="/" className="logo flex y-center">
+        <Link to="/" className="logo flex y-center">
           <FontAwesomeIcon className="icon-logo" icon={["fab", "youtube"]} />
           <h2 className="text-logo m-half">GalpilTV</h2>
-        </a>
+        </Link>
         <div className="search-wrapper flex y-center">
           <FontAwesomeIcon className="icon-search" icon={["fa", "search"]} />
           <input type="text" placeholder="Search movie..." className="search" />

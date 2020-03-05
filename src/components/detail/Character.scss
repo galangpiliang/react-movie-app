@@ -1,0 +1,41 @@
+@import "../../sass/variable.scss";
+
+.Character {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-gap: 2rem;
+  margin: 2rem 0;
+  .cast-wrapper {
+    text-align: center;
+    img {
+      width: 100%;
+      border-radius: 1rem;
+    }
+    strong {
+      font-size: 1.2rem;
+    }
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width: 768px) {
+  .Character {
+    .cast-group {
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 2rem;
+    }
+  }
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px) {
+  .Character {
+    .cast-group {
+      grid-template-columns: repeat(1, 1fr);
+    }
+  }
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 320px) {
+}

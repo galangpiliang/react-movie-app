@@ -1,0 +1,35 @@
+@import "../../sass/variable.scss";
+
+.Overview {
+  margin: 2rem 0;
+  .synopsis,
+  .info {
+    h3 {
+      width: 100%;
+      border-bottom: 1px solid $color-2;
+      line-height: 0.1rem;
+      margin: 2rem 0;
+    }
+    h3 span {
+      background: $color-1;
+      padding-right: 1rem;
+    }
+    .detail {
+      p {
+        margin: 0.5rem 0;
+      }
+    }
+  }
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width: 768px) {
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width: 480px) {
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width: 320px) {
+}

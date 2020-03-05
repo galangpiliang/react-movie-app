@@ -3,7 +3,7 @@ import "./App.scss";
 
 // Components
 import Home from "./components/home";
-import Detail from "./components/detail";
+import Detail from "./components/detail/Detail";
 import Layout from "./components/layouts";
 
 // Font Awesome
@@ -11,8 +11,9 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { fas } from "@fortawesome/free-solid-svg-icons";
 import { fab } from "@fortawesome/free-brands-svg-icons";
+import { far } from "@fortawesome/free-regular-svg-icons";
 
-library.add(fas, fab);
+library.add(fas, fab, far);
 
 function App() {
   return (
