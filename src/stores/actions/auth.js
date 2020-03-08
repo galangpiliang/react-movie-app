@@ -1,6 +1,7 @@
 import {
   SIGN_UP,
   SIGN_IN,
+  RECOVER,
   SIGN_OUT,
   LOADING,
   ERROR_LOGIN,
@@ -54,6 +55,24 @@ export const ACTION_SIGN_IN = input => {
           type: ERROR_LOGIN,
           payload: error
         });
+        dispatch({ type: LOADING });
+      });
+  };
+};
+
+export const ACTION_RECOVER = input => {
+  return dispatch => {
+    console.log("ACTION_RECOVER");
+    dispatch({ type: LOADING });
+    Axios.post(`${baseUrl}/recover`, input)
+      .then(res => {
+        console.log(res);
+        alert(res.data.data.message);
+        dispatch({ type: LOADING });
+      })
+      .catch(error => {
+        console.log(error.response);
+        alert(error.response.data.error.message);
         dispatch({ type: LOADING });
       });
   };

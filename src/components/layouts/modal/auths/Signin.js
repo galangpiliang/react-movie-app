@@ -4,7 +4,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // Redux
 import { useDispatch } from "react-redux";
-import { ACTION_SIGN_IN } from "../../../../stores/actions/auth";
+import {
+  ACTION_SIGN_IN,
+  ACTION_RECOVER
+} from "../../../../stores/actions/auth";
 
 function Signin(props) {
   const dispatch = useDispatch();
@@ -25,6 +28,16 @@ function Signin(props) {
     props.toggleModal(e);
     console.log("handleInput");
     dispatch(ACTION_SIGN_IN(input));
+  };
+
+  const handleRecover = e => {
+    if (!input.email) {
+      alert("Please input your email first");
+    } else {
+      props.toggleModal(e);
+      console.log("handleRecover");
+      dispatch(ACTION_RECOVER(input));
+    }
   };
 
   return (
@@ -61,7 +74,9 @@ function Signin(props) {
             />
           </div>
           <p className="forgot">
-            <a href="/#">Forgot your password?</a>
+            <a href="/#" onClick={handleRecover}>
+              Forgot your password?
+            </a>
           </p>
 
           <button className="button" type="submit">
