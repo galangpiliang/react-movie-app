@@ -9,12 +9,15 @@
     margin-bottom: 1rem;
     max-width: 30rem;
     flex: 1;
-    .search {
-      border: 1px solid $color-4;
-      border-radius: 4px;
-      padding: 0.5rem;
-      padding-left: 2rem;
+    form {
       width: 100%;
+      .search {
+        border: 1px solid $color-4;
+        border-radius: 4px;
+        padding: 0.5rem;
+        padding-left: 2rem;
+        width: 100%;
+      }
     }
 
     .icon-search {

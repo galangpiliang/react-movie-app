@@ -2,11 +2,18 @@ import { GET_MOVIE, LOADING, GET_GENRE } from "./types";
 import Axios from "axios";
 const baseUrl = "https://awesome-movie-data.herokuapp.com/api/v1";
 
-export const ACTION_GET_MOVIE = pageNumber => {
+export const ACTION_GET_MOVIE = (pageNumber = 1, query = false) => {
   return dispatch => {
     console.log("ACTION_GET_MOVIE");
     dispatch({ type: LOADING });
-    Axios.get(`${baseUrl}/movies/all/?page=${pageNumber}`)
+    let endPoint = `${baseUrl}/movies/all/?page=${pageNumber}`;
+    console.log(query);
+    if (query.like) {
+      endPoint = `${baseUrl}/movies/search/?like=${query.like}&page=${pageNumber}`;
+    } else if (query.genre) {
+      endPoint = `${baseUrl}/movies/genre?genre=${query.genre}&page=${pageNumber}`;
+    }
+    Axios.get(endPoint)
       .then(res => {
         console.log(res);
         dispatch({

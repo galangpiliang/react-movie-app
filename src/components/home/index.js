@@ -9,18 +9,21 @@ import {
   ACTION_GET_MOVIE,
   ACTION_GET_GENRE
 } from "../../../src/stores/actions/movie";
+import { SEARCH } from "../../stores/actions/types";
 
 export default function Home() {
   const stateMovie = useSelector(state => state.movie);
+  const stateSearch = useSelector(state => state.search);
   const dispatch = useDispatch();
   let Movie = "Loading...";
   let Genre = "Loading...";
 
   const getMovies = (page = 1) => {
-    dispatch(ACTION_GET_MOVIE(page));
+    console.log(stateSearch);
+    dispatch(ACTION_GET_MOVIE(page, stateSearch));
   };
 
-  console.log(stateMovie);
+  // console.log(stateMovie);
   Movie =
     stateMovie.docs &&
     stateMovie.docs.map(movie => (
@@ -28,15 +31,31 @@ export default function Home() {
         <img src={movie.poster} alt="" />
         <strong className="ellipsis">{movie.title}</strong>
         <span className="ellipsis">
-          {movie.genres.map(genre => genre.genre + ", ")}
+          {movie.genres && movie.genres.map(genre => genre.genre + ", ")}
         </span>
       </Link>
     ));
 
   Genre =
-    stateMovie.docs &&
+    stateMovie.genres &&
     stateMovie.genres.map(genre => (
-      <a key={genre._id} className="" href="/#">
+      <a
+        key={genre._id}
+        className={stateSearch.genre === genre.genre ? "active" : ""}
+        onClick={() => {
+          dispatch({
+            type: SEARCH,
+            payload: {
+              genre: genre.genre
+            }
+          });
+          dispatch(
+            ACTION_GET_MOVIE(1, {
+              genre: genre.genre
+            })
+          );
+        }}
+      >
         {genre.genre}
       </a>
     ));
@@ -101,7 +120,7 @@ export default function Home() {
         {/* <Link to="/detail">Go Detail</Link> */}
         <h2> Browse by category</h2>
         <div className="flex wrap link-wrapper">
-          <a className="active" href="/#">
+          <a className={stateSearch.genre ? "" : "active"} href="/#">
             All
           </a>
           {Genre}
