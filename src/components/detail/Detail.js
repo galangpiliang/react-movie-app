@@ -1,24 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 // import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Detail.scss";
 import Overview from "./Overview";
 import Character from "./Character";
 import Review from "./Review";
+import { useDispatch, useSelector } from "react-redux";
+import { ACTION_GET_DETAIL } from "../../../src/stores/actions/movie";
 
-function Detail() {
+function Detail(props) {
   const overview = "overview";
   const character = "character";
   const review = "review";
   const [detail, setDetail] = useState(overview);
+  const stateMovie = useSelector(state => state.movie);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(ACTION_GET_DETAIL(props.match.params.id));
+    return () => {
+      console.log("cleanup");
+    };
+  }, [dispatch]);
+
   return (
     <div className="Detail">
       <div className="container">
         <div className="banner">
-          <img src={require("../home/images/sonic.jpg")} alt="" />
+          <img className="poster" src={stateMovie.poster} alt="" />
           <div className="banner-body flex x-center column">
             <div className="upper">
-              <h1>Title</h1>
+              <h1>{stateMovie.title}</h1>
               <FontAwesomeIcon className="icon-logo" icon={["fa", "star"]} />
               <FontAwesomeIcon className="icon-logo" icon={["fa", "star"]} />
               <FontAwesomeIcon className="icon-logo" icon={["fa", "star"]} />
@@ -33,16 +45,14 @@ function Detail() {
               <FontAwesomeIcon className="icon-logo" icon={["far", "star"]} />
               <FontAwesomeIcon className="icon-logo" icon={["far", "star"]} />
               &emsp;
-              <span>6.7/10</span>
+              <span>{stateMovie.rating}/10</span>
               &emsp;
-              <span>( 200 Reviews )</span>
+              <span>
+                ( {(stateMovie.reviews && stateMovie.reviews.length) || 0}{" "}
+                Reviews )
+              </span>
             </div>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quia,
-              odit accusamus? Deleniti odit incidunt nulla maiores minima
-              similique vel, aut consectetur dolore enim dolorem sed nisi
-              nostrum voluptas laboriosam odio?
-            </p>
+            <p>{stateMovie.synopsis}</p>
             <div className="link">
               <a href="/detail#">Watch Trailer</a>
               <a className="watch-list" href="/detail#">

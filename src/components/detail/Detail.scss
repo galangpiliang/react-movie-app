@@ -3,11 +3,17 @@
 .Detail {
   img {
     width: 100%;
+
+    &.poster {
+      height: 100%;
+      object-fit: cover;
+    }
   }
   .banner {
     position: relative;
     margin-bottom: 1rem;
     font-weight: bold;
+    height: 400px;
     .banner-body {
       position: absolute;
       padding: 2rem;

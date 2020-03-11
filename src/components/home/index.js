@@ -27,7 +27,7 @@ export default function Home() {
   Movie =
     stateMovie.docs &&
     stateMovie.docs.map(movie => (
-      <Link key={movie._id} to="/detail" className="movie-wrapper">
+      <Link key={movie._id} to={movie._id} className="movie-wrapper">
         <img src={movie.poster} alt="" />
         <strong className="ellipsis">{movie.title}</strong>
         <span className="ellipsis">

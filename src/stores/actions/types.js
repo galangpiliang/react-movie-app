@@ -9,4 +9,5 @@ export const ERROR_LOGIN = "ERROR_LOGIN";
 export const ERROR_UPDATE = "ERROR_UPDATE";
 export const GET_MOVIE = "GET_MOVIE";
 export const GET_GENRE = "GET_GENRE";
+export const GET_DETAIL = "GET_DETAIL";
 export const SEARCH = "SEARCH";
